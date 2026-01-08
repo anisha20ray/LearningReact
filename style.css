@@ -27,5 +27,14 @@
 .product > .product_img{
 width: 100px;
 }
-
+.skeleton_Container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.skeleton{
+    width: 200px;
+    height: 400px;
+    margin: 10px;
+    background-color: #e0e0e0;
+}
 
