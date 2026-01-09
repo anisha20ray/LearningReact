@@ -14,20 +14,18 @@ export default About;*/
 class About extends Component{
     constructor(){
     super();
-    console.log("About Constructor");
     this.state={
      count:0,
     }
 }
- componentDidMount(){
+ /*componentDidMount(){
     console.log("About Component Did Mount");
     this.setState({
         count:this.state.count+1,
     })
-  }
+  }*/
 
         render(){
-            console.log("About Render");
         return(
             <div>
  <ProfileClass name="Anisha" address="Hajipur" email="bhaskar@gmail.com"/>

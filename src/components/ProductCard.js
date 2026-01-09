@@ -13,7 +13,10 @@ const ProductCard = () => {
   const[searchText,setSearchText]=useState("");
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [searchText,count]);
+  useEffect(() => {
+    fetchData();
+  }, [listOfProduct]);
 
   const fetchData = async () => {
       const data = await fetch('https://fakestoreapi.com/products');
