@@ -10,6 +10,7 @@ import Men from "./components/Men";
 import Error from "./components/Error";
 //import About from "./components/About";
 import ProductDetails from "./components/ProductDetails";
+import CompoA from "./components/CompoA";
 //import Grocery from "./components/Grocery";//normal import na krke hm lazy me dalenge
 
 //lazy loading
@@ -24,6 +25,8 @@ const App = () => {
   return (
     <div>
       <Navbar />
+      <CompoA />
+      {/* Outlet ka mtlb jha bhi hm child routes dikhana chahte hai wr jaye  */}
       <Outlet />
       {/* /ProductCard */}
 
