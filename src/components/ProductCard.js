@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 //import {productList} from "../utils/Constant";//named import
-import Product from "./Product";//default import
+import Product,{HOF} from "./Product";//default import
 import Skeleton from"./Skeleton";//default import
 import {Link} from "react-router-dom";//do not allow full page reload
 const ProductCard = () => {
@@ -31,6 +31,8 @@ const ProductCard = () => {
       setFilterProduct(resData);
   };
   
+   const HOFComponenet=HOF(Product);  //this HOF is a higher order function component
+
   //conditional rendering
 //if(listOfProduct.length===0){
  // return <Skeleton/>}
@@ -58,7 +60,12 @@ const ProductCard = () => {
       {
      filterProduct.map((product) => {
         return(
-      <Link  key={product.id} to={`/product/${product.id}`}><Product product={product}/></Link>
+      <Link  key={product.id} to={`/product/${product.id}`}>
+       {
+        // <HOFComponenet product={product}/>
+        product.rating.rate>=4.0 ? (<HOFComponenet product={product}/>) : (<Product product={product}/>)
+       }
+        </Link>
     );
     })
     }
