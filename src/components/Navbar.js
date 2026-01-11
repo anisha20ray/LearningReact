@@ -10,21 +10,18 @@ export const Navbar = () => {
   useEffect(() => {
   }, []);
   return (
- <div className="navbar" style={{
-  "display":"flex",
-  "justifyContent":"space-between",
-  "borderBottom":"1px solid black",
-  "backgroundColor":"lightblue",
-}}>
-    <h1>AJIO</h1>
- <ul className="nav-items">
+ <div className="flex items-center justify-between p-4 bg-gray-100 shadow-lg">
+    <h1 className="text-2xl font-bold">AJIO</h1>
+ <ul className="flex space-x-4 items-center">
     <li><Link to="/men">MEN</Link></li>
     <li><Link to="/women">WOMEN</Link></li>
     <li><Link to="/kids">KIDS</Link></li>
     <li><Link to="/home-living">HOME & LIVING</Link></li>
     <li><Link to="/about">ABOUT</Link></li> 
-    <li><Link to="/cart">CART</Link></li>
-    <button onClick={()=>{
+    <li><Link to="/grocery">GROCERY</Link></li>
+    <li>CART</li>
+    <button className="bg-purple-600 px-6 py-1 rounded-md text-white font-semibold"
+    onClick={()=>{
       btnName==="Light"?setBtnName("Dark"):setBtnName("Light");
  }}>
       {btnName}

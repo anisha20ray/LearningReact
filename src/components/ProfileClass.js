@@ -1,5 +1,6 @@
 import React from "react";
 
+
 class ProfileClass extends React.Component {
   constructor(props) {
     super(props);
@@ -21,18 +22,22 @@ class ProfileClass extends React.Component {
       userDetails: resData,
     });
 
-    this.timer = setInterval(() => {
-      console.log("Namaste React Interval");
-    }, 1000);
+    // this.timer = setInterval(() => {
+    //   console.log("Namaste React Interval");
+    // }, 1000);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.count !== prevState.count||this.state.count2 !== prevState.count2   ) {
+    if (
+      this.state.count !== prevState.count
+      // || this.state.count2 !== prevState.count2
+    ) {
       console.log("Profile Class Component Did Update");
     }
-    if (this.state.listOfProduct !== prevState.listOfProduct) {
-      console.log("Profile Class Component Did Update");
-    }
+
+    // if (this.state.listOfProduct !== prevState.listOfProduct) {
+    //   console.log("Profile Class Component Did Update");
+    // }
   }
 
   componentWillUnmount() {

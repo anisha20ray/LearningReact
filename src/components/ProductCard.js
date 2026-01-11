@@ -13,10 +13,16 @@ const ProductCard = () => {
   const[searchText,setSearchText]=useState("");
   useEffect(() => {
     fetchData();
-  }, [searchText,count]);
-  useEffect(() => {
-    fetchData();
-  }, [listOfProduct]);
+    const timer=setInterval(() => {
+      console.log("fn component interval");
+    }, 1000);
+
+  return () => {
+      //cleanup function
+     clearInterval(timer); 
+    }
+  }, []);
+
 
   const fetchData = async () => {
       const data = await fetch('https://fakestoreapi.com/products');

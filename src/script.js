@@ -1,5 +1,5 @@
 
-import React from "react";
+import React,{Suspense,lazy} from "react";
 import ReactDOM from "react-dom/client";
 import { Navbar } from "./components/Navbar";
 import ProductCard from "./components/ProductCard";
@@ -8,8 +8,17 @@ import { createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 import Kid from "./components/kid";
 import Men from "./components/Men";
 import Error from "./components/Error";
-import About from "./components/About";
+//import About from "./components/About";
 import ProductDetails from "./components/ProductDetails";
+//import Grocery from "./components/Grocery";//normal import na krke hm lazy me dalenge
+
+//lazy loading
+//code splitting
+//dynamic import
+//the above three are same
+
+const Grocery =lazy(() => import("./components/Grocery"));
+const About = lazy(() => import("./components/About")); 
 
 const App = () => {
   return (
@@ -45,7 +54,11 @@ const appRouter = createBrowserRouter([
   },
   {
     path: "/about",
-    element: <About />
+    element: <Suspense fallback={<h1>Loading...</h1>}><About /></Suspense>
+  },
+  {
+    path: "/grocery",
+    element:<Suspense fallback={<h1>Loading...</h1>}><Grocery /></Suspense>
   },
     ],
     errorElement: <Error />
