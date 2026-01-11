@@ -1,14 +1,13 @@
-import React from "react";
+import React,{useContext} from "react";
 import CompoB from "./CompoB";
+import UserContext from "../utils/UserContext";
+
 const CompoA = () => {
-    const user={
-        name:"Anisha Ray",
-        email:"anisha@gmail.com"
-    }
+    const user=useContext(UserContext);
   return (
   <div className="max-w-5xl m-auto">
-    <h1>Component A</h1>
-    <CompoB user={user}/>
+    <h1>{user.name}</h1>
+    <CompoB/>
     </div>
     );
 };

@@ -1,10 +1,10 @@
 import React from "react";
 import CompoC from "./CompoC";
-const CompoB = ({user}) => {
+const CompoB = () => {
   return (
   <div>
     <h1>Component B</h1>
-    <CompoC user={user}/>
+    <CompoC/>
     </div>
     );
 };

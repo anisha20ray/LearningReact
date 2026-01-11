@@ -1,5 +1,8 @@
 import React from "react";
-const CompoC = ({user}) => {
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
+const CompoC = () => {
+    const user=useContext(UserContext);
   return (
   <div className="border border-black">
    <h1>User Profile</h1>
