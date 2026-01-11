@@ -36,21 +36,25 @@ const ProductCard = () => {
  // return <Skeleton/>}
    return listOfProduct.length===0 ? <Skeleton/> : (
     <div>
-      <div style={{marginTop:"10px"}}>
-        <input type="text"placeholder="Search Product" onChange={(e)=>setSearchText(e.target.value)} value={searchText}/>
+      <div className="mt-10 flex mx-5 space-x-10">
+       <div>
+         <input className="border border-gray-7 p-2 rounded-sm" type="text"placeholder="Search Product" onChange={(e)=>setSearchText(e.target.value)} value={searchText}/>
         <button onClick={()=>{
           const filteredData=listOfProduct.filter((product)=>{
             return product.title.toLowerCase().includes(searchText.toLowerCase());
           })
           setFilterProduct(filteredData);
-        }}>Search</button>
-      </div>
-      <button onClick={() => {
-      
+        }} className="bg-purple-600 px-6 py-2 rounded-sm text-white font-semibold">Search</button>
+        </div>
+        <button className="bg-purple-600 px-6 py-2 rounded-sm text-white font-semibold" 
+      onClick={() => {
        const filteredProduct=listOfProduct.filter(product => product.rating.rate>=4.0);
         setListOfProduct(filteredProduct);
-        }} style={{marginTop:"10px"}}>Top rated product</button>  
-    <div className="product_card">
+        }}>Top rated product</button>  
+      </div>
+      
+        
+    <div className="max-w-7xl mx-auto grid grid-cols-4 gap-4 m-10">
       {
      filterProduct.map((product) => {
         return(
