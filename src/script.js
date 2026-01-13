@@ -16,6 +16,7 @@ import CompoA from "./components/CompoA";
 import {Provider} from "react-redux"; //communicate with redux store and react app
 import appStore from "./store/Store";
 import Cart from "./components/Cart";
+import Login from "./components/Login";
 
 //lazy loading
 //code splitting
@@ -79,6 +80,10 @@ const appRouter = createBrowserRouter([
   {
     path:"/cart",
     element:<Cart/>
+  },
+  {
+    path:"/login",
+    element:<Login/>
   }
     ],
     errorElement: <Error />
