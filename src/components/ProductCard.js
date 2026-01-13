@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 //import {productList} from "../utils/Constant";//named import
 import Product,{HOF} from "./Product";//default import
 import Skeleton from"./Skeleton";//default import
 import {Link} from "react-router-dom";//do not allow full page reload
+import UserContext from "../utils/UserContext";
 const ProductCard = () => {
   //local state variable
   //const array=useState(productList);
@@ -11,16 +12,15 @@ const ProductCard = () => {
   const [listOfProduct, setListOfProduct] = useState([]);//array destructuring
     const [filterProduct, setFilterProduct] = useState([]);
   const[searchText,setSearchText]=useState("");
+
+  const user=useContext(UserContext);
   useEffect(() => {
     fetchData();
-    const timer=setInterval(() => {
-      console.log("fn component interval");
-    }, 1000);
-
-  return () => {
+  
+ // return () => {
       //cleanup function
-     clearInterval(timer); 
-    }
+    // clearInterval(timer); 
+    //}
   }, []);
 
 
@@ -40,7 +40,7 @@ const ProductCard = () => {
     <div>
       <div className="mt-10 flex mx-5 space-x-10">
        <div>
-         <input className="border border-gray-7 p-2 rounded-sm" type="text"placeholder="Search Product" onChange={(e)=>setSearchText(e.target.value)} value={searchText}/>
+         <input className="border border-gray-700 p-2 rounded-sm" type="text"placeholder="Search Product" onChange={(e)=>setSearchText(e.target.value)} value={searchText}/>
         <button onClick={()=>{
           const filteredData=listOfProduct.filter((product)=>{
             return product.title.toLowerCase().includes(searchText.toLowerCase());
@@ -51,8 +51,11 @@ const ProductCard = () => {
         <button className="bg-purple-600 px-6 py-2 rounded-sm text-white font-semibold" 
       onClick={() => {
        const filteredProduct=listOfProduct.filter(product => product.rating.rate>=4.0);
-        setListOfProduct(filteredProduct);
-        }}>Top rated product</button>  
+        setFilterProduct(filteredProduct);
+        }}>Top rated product</button> 
+        <div>
+          <input className="border border-black px-2 py-2" type="text" value={user.name} onChange={(e)=>user.setUserName(e.target.value)}></input> 
+          </div> 
       </div>
       
         

@@ -4,9 +4,10 @@
     return (
         <div className="flex flex-col items-center justify-center h-96 border border-gray-600 rounded-sm hover:shadow-lg hover:bg-gray-200 transition-shadow duration-300 p-4">
            <img className="w-32 h-40 object-contain" src={image}/>
-            <h1>{title}</h1>
+            <h1 className="text-center text-sm">{title}</h1>
             <p>{rating?.rate} ratings</p>
             <p>Price: $ {price}</p> 
+
         </div> 
     )
         }
@@ -21,7 +22,9 @@
                 </div>
                 )
             }
-        }
+        } 
+        
         //const HOFComponenet=HOF(Product); 
         //<Component product={product}/>
-        //  //this HOF is a higher order function component
+        //this HOF is a higher order function component
+        

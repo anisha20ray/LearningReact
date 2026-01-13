@@ -1,10 +1,10 @@
 import React from "react";
-
+import UserContext from "../utils/UserContext";
 
 class ProfileClass extends React.Component {
   constructor(props) {
     super(props);
-    console.log("Profile Class Constructor");
+    //console.log("Profile Class Constructor");
 
     this.state = {
       userDetails: null,
@@ -13,7 +13,7 @@ class ProfileClass extends React.Component {
   }
 
   async componentDidMount() {
-    console.log("Profile Class Component Did Mount");
+   // console.log("Profile Class Component Did Mount");
 
     const data = await fetch("https://api.github.com/users/anisha20ray");
     const resData = await data.json();
@@ -28,12 +28,12 @@ class ProfileClass extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (
+   /* if (
       this.state.count !== prevState.count
       // || this.state.count2 !== prevState.count2
     ) {
       console.log("Profile Class Component Did Update");
-    }
+    }*/
 
     // if (this.state.listOfProduct !== prevState.listOfProduct) {
     //   console.log("Profile Class Component Did Update");
@@ -41,12 +41,12 @@ class ProfileClass extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log("Profile Class Component Will Unmount");
+   // console.log("Profile Class Component Will Unmount");
     clearInterval(this.timer);
   }
 
   render() {
-    console.log("Profile Class Render");
+   // console.log("Profile Class Render");
 
     if (this.state.userDetails === null) {
       return <h1>Loading...</h1>;
@@ -57,7 +57,11 @@ class ProfileClass extends React.Component {
     return (
       <div style={{ border: "1px solid black", padding: "10px" }}>
         <h1>Profile Class Component</h1>
-        <h3>Name: {name}</h3>
+        <UserContext.Consumer>
+        {(data)=>(
+          <h1 className="font-bold text-lg">Name:{data.name}</h1>
+        )}
+        </UserContext.Consumer>
         <h3>Login_id: {login}</h3>
         <h3>Id: {id}</h3>
         <img src={avatar_url} alt="Avatar" width="150" />

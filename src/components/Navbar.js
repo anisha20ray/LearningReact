@@ -1,10 +1,13 @@
 import { useState,useEffect,useContext } from "react";
 import {Link} from "react-router-dom";//do not allow full page reload
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 //named export
 export const Navbar = () => {
   //let btnName="Light";
   const [btnName, setBtnName] =useState("Light");
+  const cartItems=useSelector((store=>store.cart.cartItems));
+
 
 const user=useContext(UserContext);
   console.log("Navbar user:",user);
@@ -24,7 +27,7 @@ const user=useContext(UserContext);
     <li><Link to="/home-living">HOME & LIVING</Link></li>
     <li><Link to="/about">ABOUT</Link></li> 
     <li><Link to="/grocery">GROCERY</Link></li>
-    <li>CART</li>
+    <li><Link to="/cart">CART-{cartItems.length}</Link></li>
     <li>{user.name}</li>
     <button className="bg-purple-600 px-6 py-1 rounded-md text-white font-semibold"
     onClick={()=>{
